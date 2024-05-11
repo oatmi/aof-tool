@@ -1,7 +1,8 @@
-#!/usr/bin/env python3
 import os
 
 from argparse import ArgumentParser
+from rdbtools import RdbParser
+from aoftools.aof_callbacks import AOFCallback
 
 
 def main():
@@ -39,9 +40,9 @@ Example : %(prog)s --dump -f json "user.*" /path/to/appendonlydir"""
         print(rdb_file)
         print(aof_file)
 
-        # aof_callback = AOFCallback()
-        # parser = RdbParser(aof_callback, filters=None)
-        # parser.parse(rdb_file)
+        aof_callback = AOFCallback()
+        parser = RdbParser(aof_callback, filters=None)
+        parser.parse(rdb_file)
     finally:
         pass
 
